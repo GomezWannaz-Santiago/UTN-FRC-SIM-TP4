@@ -29,6 +29,10 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Title title1 = new System.Windows.Forms.DataVisualization.Charting.Title();
             this.txtCantidadVueltas = new System.Windows.Forms.TextBox();
             this.btnConfirmar = new System.Windows.Forms.Button();
             this.gridTiempos = new System.Windows.Forms.DataGridView();
@@ -38,9 +42,9 @@
             this.txtTiempoMaximo = new System.Windows.Forms.TextBox();
             this.txtTiempoMinimo = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtPromedio45 = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.txtPromedio = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.Vuelta = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.A1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -50,7 +54,9 @@
             this.A5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Final = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Promedio = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.graficoLineas = new System.Windows.Forms.DataVisualization.Charting.Chart();
             ((System.ComponentModel.ISupportInitialize)(this.gridTiempos)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.graficoLineas)).BeginInit();
             this.SuspendLayout();
             // 
             // txtCantidadVueltas
@@ -72,6 +78,8 @@
             // 
             // gridTiempos
             // 
+            this.gridTiempos.AllowUserToAddRows = false;
+            this.gridTiempos.AllowUserToDeleteRows = false;
             this.gridTiempos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.gridTiempos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Vuelta,
@@ -82,9 +90,10 @@
             this.A5,
             this.Final,
             this.Promedio});
+            this.gridTiempos.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.gridTiempos.Location = new System.Drawing.Point(47, 101);
             this.gridTiempos.Name = "gridTiempos";
-            this.gridTiempos.Size = new System.Drawing.Size(335, 318);
+            this.gridTiempos.Size = new System.Drawing.Size(406, 318);
             this.gridTiempos.TabIndex = 2;
             // 
             // contextMenuStrip1
@@ -105,7 +114,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(440, 101);
+            this.label2.Location = new System.Drawing.Point(45, 466);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(81, 13);
             this.label2.TabIndex = 5;
@@ -113,14 +122,16 @@
             // 
             // txtTiempoMaximo
             // 
-            this.txtTiempoMaximo.Location = new System.Drawing.Point(443, 117);
+            this.txtTiempoMaximo.Enabled = false;
+            this.txtTiempoMaximo.Location = new System.Drawing.Point(48, 482);
             this.txtTiempoMaximo.Name = "txtTiempoMaximo";
             this.txtTiempoMaximo.Size = new System.Drawing.Size(100, 20);
             this.txtTiempoMaximo.TabIndex = 6;
             // 
             // txtTiempoMinimo
             // 
-            this.txtTiempoMinimo.Location = new System.Drawing.Point(443, 180);
+            this.txtTiempoMinimo.Enabled = false;
+            this.txtTiempoMinimo.Location = new System.Drawing.Point(48, 533);
             this.txtTiempoMinimo.Name = "txtTiempoMinimo";
             this.txtTiempoMinimo.Size = new System.Drawing.Size(100, 20);
             this.txtTiempoMinimo.TabIndex = 8;
@@ -128,39 +139,41 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(440, 164);
+            this.label3.Location = new System.Drawing.Point(45, 517);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(78, 13);
             this.label3.TabIndex = 7;
             this.label3.Text = "Tiempo Minimo";
             // 
-            // textBox1
+            // txtPromedio45
             // 
-            this.textBox1.Location = new System.Drawing.Point(443, 279);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 20);
-            this.textBox1.TabIndex = 10;
+            this.txtPromedio45.Enabled = false;
+            this.txtPromedio45.Location = new System.Drawing.Point(229, 533);
+            this.txtPromedio45.Name = "txtPromedio45";
+            this.txtPromedio45.Size = new System.Drawing.Size(100, 20);
+            this.txtPromedio45.TabIndex = 10;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(440, 263);
+            this.label4.Location = new System.Drawing.Point(226, 517);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(172, 13);
             this.label4.TabIndex = 9;
             this.label4.Text = "Promedio de tiempos menores a 45";
             // 
-            // textBox2
+            // txtPromedio
             // 
-            this.textBox2.Location = new System.Drawing.Point(443, 228);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(100, 20);
-            this.textBox2.TabIndex = 12;
+            this.txtPromedio.Enabled = false;
+            this.txtPromedio.Location = new System.Drawing.Point(229, 482);
+            this.txtPromedio.Name = "txtPromedio";
+            this.txtPromedio.Size = new System.Drawing.Size(100, 20);
+            this.txtPromedio.TabIndex = 12;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(440, 212);
+            this.label5.Location = new System.Drawing.Point(226, 466);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(88, 13);
             this.label5.TabIndex = 11;
@@ -206,14 +219,35 @@
             this.Promedio.HeaderText = "Promedio";
             this.Promedio.Name = "Promedio";
             // 
+            // graficoLineas
+            // 
+            chartArea1.Name = "ChartArea1";
+            this.graficoLineas.ChartAreas.Add(chartArea1);
+            legend1.Name = "Promedio";
+            legend1.Title = "Serie";
+            this.graficoLineas.Legends.Add(legend1);
+            this.graficoLineas.Location = new System.Drawing.Point(459, 101);
+            this.graficoLineas.Name = "graficoLineas";
+            series1.ChartArea = "ChartArea1";
+            series1.Legend = "Promedio";
+            series1.Name = "Series1";
+            this.graficoLineas.Series.Add(series1);
+            this.graficoLineas.Size = new System.Drawing.Size(627, 485);
+            this.graficoLineas.TabIndex = 13;
+            this.graficoLineas.Text = "chart1";
+            title1.Name = "Title1";
+            title1.Text = "Evolución de Promedio";
+            this.graficoLineas.Titles.Add(title1);
+            // 
             // DuracionProyecto
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.textBox2);
+            this.ClientSize = new System.Drawing.Size(1116, 598);
+            this.Controls.Add(this.graficoLineas);
+            this.Controls.Add(this.txtPromedio);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.txtPromedio45);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.txtTiempoMinimo);
             this.Controls.Add(this.label3);
@@ -226,6 +260,7 @@
             this.Name = "DuracionProyecto";
             this.Text = "Form1";
             ((System.ComponentModel.ISupportInitialize)(this.gridTiempos)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.graficoLineas)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -242,9 +277,9 @@
         private System.Windows.Forms.TextBox txtTiempoMaximo;
         private System.Windows.Forms.TextBox txtTiempoMinimo;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtPromedio45;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox txtPromedio;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.DataGridViewTextBoxColumn Vuelta;
         private System.Windows.Forms.DataGridViewTextBoxColumn A1;
@@ -254,6 +289,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn A5;
         private System.Windows.Forms.DataGridViewTextBoxColumn Final;
         private System.Windows.Forms.DataGridViewTextBoxColumn Promedio;
+        private System.Windows.Forms.DataVisualization.Charting.Chart graficoLineas;
     }
 }
 

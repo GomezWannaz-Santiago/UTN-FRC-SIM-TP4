@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Forms.DataVisualization.Charting;
 using WindowsFormsApp1.LogicaDeNegocio;
 
 namespace WindowsFormsApp1
@@ -34,7 +35,16 @@ namespace WindowsFormsApp1
                 Proyecto proyecto = new Proyecto();
 
                 gridTiempos.Rows.Clear();
-                proyecto.Simulacion(int.Parse(txtCantidadVueltas.Text), gridTiempos);
+                graficoLineas.Series.Clear();                
+                graficoLineas.Series.Add("Valores");
+                graficoLineas.Series[0].ChartType = SeriesChartType.Line;
+
+                var resultado = proyecto.Simulacion(int.Parse(txtCantidadVueltas.Text), gridTiempos, graficoLineas);
+
+                txtTiempoMaximo.Text = resultado[0].ToString();
+                txtTiempoMinimo.Text = resultado[1].ToString();
+                txtPromedio.Text = resultado[2].ToString();
+                txtPromedio45.Text = resultado[3].ToString();
 
             }
             catch (Exception ex)
