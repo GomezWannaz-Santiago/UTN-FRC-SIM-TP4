@@ -60,6 +60,7 @@
             this.btnConfirmar.TabIndex = 1;
             this.btnConfirmar.Text = "Confirmar";
             this.btnConfirmar.UseVisualStyleBackColor = true;
+            this.btnConfirmar.Click += new System.EventHandler(this.btnConfirmar_Click);
             // 
             // gridTiempos
             // 
@@ -148,7 +149,7 @@
             this.label5.TabIndex = 11;
             this.label5.Text = "Tiempo promedio";
             // 
-            // Form1
+            // DuracionProyecto
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -165,7 +166,7 @@
             this.Controls.Add(this.gridTiempos);
             this.Controls.Add(this.btnConfirmar);
             this.Controls.Add(this.txtCantidadVueltas);
-            this.Name = "Form1";
+            this.Name = "DuracionProyecto";
             this.Text = "Form1";
             ((System.ComponentModel.ISupportInitialize)(this.gridTiempos)).EndInit();
             this.ResumeLayout(false);
