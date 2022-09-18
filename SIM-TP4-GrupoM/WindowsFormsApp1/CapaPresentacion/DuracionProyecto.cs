@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WindowsFormsApp1.LogicaDeNegocio;
 
 namespace WindowsFormsApp1
 {
@@ -20,7 +21,7 @@ namespace WindowsFormsApp1
         private void btnConfirmar_Click(object sender, EventArgs e)
         {
             try
-            {
+            {                
                 if (txtCantidadVueltas.Text == "")
                 {
                     throw new Exception("Ingrese la cantidad de simulaciones");
@@ -29,10 +30,12 @@ namespace WindowsFormsApp1
                 {
                     throw new Exception("Ingrese un valor valido mayor a 0");
                 }
-                else
-                {
 
-                }
+                Proyecto proyecto = new Proyecto();
+
+                gridTiempos.Rows.Clear();
+                proyecto.Simulacion(int.Parse(txtCantidadVueltas.Text), gridTiempos);
+
             }
             catch (Exception ex)
             {

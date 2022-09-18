@@ -42,6 +42,14 @@
             this.label4 = new System.Windows.Forms.Label();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
+            this.Vuelta = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.A1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.A2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.A3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.A4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.A5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Final = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Promedio = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.gridTiempos)).BeginInit();
             this.SuspendLayout();
             // 
@@ -65,6 +73,15 @@
             // gridTiempos
             // 
             this.gridTiempos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.gridTiempos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Vuelta,
+            this.A1,
+            this.A2,
+            this.A3,
+            this.A4,
+            this.A5,
+            this.Final,
+            this.Promedio});
             this.gridTiempos.Location = new System.Drawing.Point(47, 101);
             this.gridTiempos.Name = "gridTiempos";
             this.gridTiempos.Size = new System.Drawing.Size(335, 318);
@@ -149,6 +166,46 @@
             this.label5.TabIndex = 11;
             this.label5.Text = "Tiempo promedio";
             // 
+            // Vuelta
+            // 
+            this.Vuelta.HeaderText = "Vuelta";
+            this.Vuelta.Name = "Vuelta";
+            // 
+            // A1
+            // 
+            this.A1.HeaderText = "A1";
+            this.A1.Name = "A1";
+            // 
+            // A2
+            // 
+            this.A2.HeaderText = "A2";
+            this.A2.Name = "A2";
+            // 
+            // A3
+            // 
+            this.A3.HeaderText = "A3";
+            this.A3.Name = "A3";
+            // 
+            // A4
+            // 
+            this.A4.HeaderText = "A4";
+            this.A4.Name = "A4";
+            // 
+            // A5
+            // 
+            this.A5.HeaderText = "A5";
+            this.A5.Name = "A5";
+            // 
+            // Final
+            // 
+            this.Final.HeaderText = "Final";
+            this.Final.Name = "Final";
+            // 
+            // Promedio
+            // 
+            this.Promedio.HeaderText = "Promedio";
+            this.Promedio.Name = "Promedio";
+            // 
             // DuracionProyecto
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -189,6 +246,14 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Vuelta;
+        private System.Windows.Forms.DataGridViewTextBoxColumn A1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn A2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn A3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn A4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn A5;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Final;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Promedio;
     }
 }
 

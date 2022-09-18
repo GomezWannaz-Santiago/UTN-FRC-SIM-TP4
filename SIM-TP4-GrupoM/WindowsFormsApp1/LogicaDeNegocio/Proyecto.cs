@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace WindowsFormsApp1.LogicaDeNegocio
 {
@@ -11,7 +12,7 @@ namespace WindowsFormsApp1.LogicaDeNegocio
         public int cantVueltas { get; set; }
         //public VectorEstados vector { get; set; }
 
-        public void Simulacion (int cantidadVueltas)
+        public void Simulacion (int cantidadVueltas, DataGridView dataGrid)
         {
             int muestras;
             Random rnd = new Random();
@@ -25,12 +26,11 @@ namespace WindowsFormsApp1.LogicaDeNegocio
                 muestras = 1;
             }
 
-
-            double A1 = rnd.NextDouble();
-            double A2 = rnd.NextDouble();
-            double A3 = rnd.NextDouble();
-            double A4 = rnd.NextDouble();
-            double A5 = rnd.NextDouble();
+            double A1 = ObtenerRNDUniforme(20,30);
+            double A2 = ObtenerRNDUniforme(30,50);
+            double A3 = ObtenerRNDExponencial(30);
+            double A4 = ObtenerRNDUniforme(10, 20);
+            double A5 = ObtenerRNDExponencial(5);
             double final = ComprarCaminos(A1,A2,A3,A4,A5);
             int bandera45 = 0;
             
@@ -39,15 +39,18 @@ namespace WindowsFormsApp1.LogicaDeNegocio
                 bandera45 = 1;
             }
 
+
+
             VectorEstados vector = new VectorEstados() { A1=A1, A2=A2, A3=A3, A4 = A4, A5=A5, Final=final, Max=final, Min=final, Contador45=bandera45, Acumulador=final  };
 
             for (int i = 1; i < cantidadVueltas; i++)
             {
-                A1 = rnd.NextDouble();
-                A2 = rnd.NextDouble();
-                A3 = rnd.NextDouble();
-                A4 = rnd.NextDouble();
-                A5 = rnd.NextDouble();
+                A1 = ObtenerRNDUniforme(20, 30);
+                A2 = ObtenerRNDUniforme(30, 50);
+                A3 = ObtenerRNDExponencial(30);
+                A4 = ObtenerRNDUniforme(10, 20);
+                A5 = ObtenerRNDExponencial(5);
+
                 final = ComprarCaminos(A1, A2, A3, A4, A5);
                 
                 if (final <= 45)
@@ -66,7 +69,7 @@ namespace WindowsFormsApp1.LogicaDeNegocio
 
                 if (i%muestras == 0)
                 {
-
+                    dataGrid.Rows.Add(i, Math.Round(A1,5), Math.Round(A2,5), Math.Round(A3, 5), Math.Round(A4, 5), Math.Round(A5, 5), Math.Round(final, 5), Math.Round((vector.Acumulador + final) / i ),5);
                 }
 
                 vector.A1 = A1;
@@ -75,7 +78,7 @@ namespace WindowsFormsApp1.LogicaDeNegocio
                 vector.A4 = A4;
                 vector.A5 = A5;
                 vector.Final = final;
-                vector.Acumulador = vector.Acumulador + final;
+                vector.Acumulador += final;
             }
         }
 
@@ -100,6 +103,17 @@ namespace WindowsFormsApp1.LogicaDeNegocio
             {
                 return R1;
             }
+        }
+
+        private double ObtenerRNDUniforme(int limInf, int limSup)
+        {
+            var rnd = new Random().NextDouble();
+            return limInf + rnd * (limSup - limInf);
+        }
+        private double ObtenerRNDExponencial(double media)
+        {
+            var rnd = new Random().NextDouble();
+            return (-1 * media) * Math.Log(1 - rnd);             
         }
 
     }
