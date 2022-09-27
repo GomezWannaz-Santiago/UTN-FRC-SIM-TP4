@@ -32,7 +32,7 @@ namespace WindowsFormsApp1.LogicaDeNegocio
             double A3 = ObtenerRNDExponencial(30, rnd.NextDouble());
             double A4 = ObtenerRNDUniforme(10, 20, rnd.NextDouble());
             double A5 = ObtenerRNDExponencial(5, rnd.NextDouble());
-            double final = ComprarCaminos(A1,A2,A3,A4,A5);
+            double final = CompararCaminos(A1,A2,A3,A4,A5);
             int bandera45 = 0;
             
             if (final <= 45)
@@ -42,7 +42,8 @@ namespace WindowsFormsApp1.LogicaDeNegocio
 
 
 
-            VectorEstados vector = new VectorEstados() { A1=A1, A2=A2, A3=A3, A4 = A4, A5=A5, Final=final, Max=final, Min=final, Contador45=bandera45, Acumulador=final  };
+            VectorEstados vector = new VectorEstados() { A1=A1, A2=A2, A3=A3, A4 = A4, A5=A5, Final=final, Max=final, Min=final, Contador45=bandera45, Acumulador=final };
+            vector.SumaVarianza = Math.Pow(vector.Final - vector.Acumulador, 2);
             dataGrid.Rows.Add(1, Math.Round(A1, 5), Math.Round(A2, 5), Math.Round(A3, 5), Math.Round(A4, 5), Math.Round(A5, 5), Math.Round(final, 5), Math.Round( final), 5);
 
             for (int i = 1; i < cantidadVueltas; i++)
@@ -53,7 +54,7 @@ namespace WindowsFormsApp1.LogicaDeNegocio
                 A4 = ObtenerRNDUniforme(10, 20, rnd.NextDouble());
                 A5 = ObtenerRNDExponencial(5, rnd.NextDouble());
 
-                final = ComprarCaminos(A1, A2, A3, A4, A5);
+                final = CompararCaminos(A1, A2, A3, A4, A5);
                 
                 if (final <= 45)
                 {
@@ -70,7 +71,7 @@ namespace WindowsFormsApp1.LogicaDeNegocio
                 }
 
                 if ((i+1)%muestras == 0)
-                {
+                {                    
                     dataGrid.Rows.Add(i+1, Math.Round(A1,5), Math.Round(A2,5), Math.Round(A3, 5), Math.Round(A4, 5), Math.Round(A5, 5), Math.Round(final, 5), Math.Round((vector.Acumulador + final) /(i+1),5));
                     grafico.Series[0].Points.AddXY((double)(i + 1), Math.Round((vector.Acumulador + final) / (i + 1), 5)); //Asigna los valores del eje x (Intervalos) e y (apricion de los numeros en los intervalos) al grafico 
 
@@ -83,19 +84,21 @@ namespace WindowsFormsApp1.LogicaDeNegocio
                 vector.A5 = A5;
                 vector.Final = final;
                 vector.Acumulador += final;
+                vector.SumaVarianza += Math.Pow(vector.Final - vector.Acumulador / i+1, 2);
             }            
 
-            double[] resultado = new double[4];
+            double[] resultado = new double[5];
             resultado[0] = Math.Round(vector.Max,3);
             resultado[1] = Math.Round(vector.Min,3);
             resultado[2] = Math.Round(vector.Acumulador / cantidadVueltas,3);
             resultado[3] = Math.Round((double)vector.Contador45 / cantidadVueltas,3);
+            resultado[4] = Math.Round(Math.Sqrt(vector.SumaVarianza / cantidadVueltas), 3);
             return resultado;
 
 
         }
 
-        private double ComprarCaminos (double A1, double A2, double A3, double A4, double A5)
+        private double CompararCaminos (double A1, double A2, double A3, double A4, double A5)
         {
             double R1;
             
@@ -126,8 +129,6 @@ namespace WindowsFormsApp1.LogicaDeNegocio
         {            
             return (-1 * media) * Math.Log(1 - rnd);             
         }
-
-
-
+            
     }
 }

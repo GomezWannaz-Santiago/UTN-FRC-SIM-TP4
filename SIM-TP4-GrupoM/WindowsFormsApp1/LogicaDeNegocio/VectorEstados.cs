@@ -17,7 +17,10 @@ namespace WindowsFormsApp1.LogicaDeNegocio
         public double Min { get; set; }
         public double Final { get; set; }
         public int Contador45 { get; set; }
-        public double Acumulador { get; set; }
+        public double Acumulador { get; set; }   
+        
+        public double SumaVarianza { get; set; }
+
         public VectorEstados()
         {
 

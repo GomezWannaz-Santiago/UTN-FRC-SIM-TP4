@@ -36,6 +36,14 @@
             this.txtCantidadVueltas = new System.Windows.Forms.TextBox();
             this.btnConfirmar = new System.Windows.Forms.Button();
             this.gridTiempos = new System.Windows.Forms.DataGridView();
+            this.Vuelta = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.A1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.A2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.A3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.A4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.A5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Final = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Promedio = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -46,15 +54,9 @@
             this.label4 = new System.Windows.Forms.Label();
             this.txtPromedio = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.Vuelta = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.A1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.A2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.A3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.A4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.A5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Final = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Promedio = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.graficoLineas = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.txtFecha = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.gridTiempos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.graficoLineas)).BeginInit();
             this.SuspendLayout();
@@ -95,6 +97,46 @@
             this.gridTiempos.Name = "gridTiempos";
             this.gridTiempos.Size = new System.Drawing.Size(406, 318);
             this.gridTiempos.TabIndex = 2;
+            // 
+            // Vuelta
+            // 
+            this.Vuelta.HeaderText = "Vuelta";
+            this.Vuelta.Name = "Vuelta";
+            // 
+            // A1
+            // 
+            this.A1.HeaderText = "A1";
+            this.A1.Name = "A1";
+            // 
+            // A2
+            // 
+            this.A2.HeaderText = "A2";
+            this.A2.Name = "A2";
+            // 
+            // A3
+            // 
+            this.A3.HeaderText = "A3";
+            this.A3.Name = "A3";
+            // 
+            // A4
+            // 
+            this.A4.HeaderText = "A4";
+            this.A4.Name = "A4";
+            // 
+            // A5
+            // 
+            this.A5.HeaderText = "A5";
+            this.A5.Name = "A5";
+            // 
+            // Final
+            // 
+            this.Final.HeaderText = "Final";
+            this.Final.Name = "Final";
+            // 
+            // Promedio
+            // 
+            this.Promedio.HeaderText = "Promedio";
+            this.Promedio.Name = "Promedio";
             // 
             // contextMenuStrip1
             // 
@@ -179,46 +221,6 @@
             this.label5.TabIndex = 11;
             this.label5.Text = "Tiempo promedio";
             // 
-            // Vuelta
-            // 
-            this.Vuelta.HeaderText = "Vuelta";
-            this.Vuelta.Name = "Vuelta";
-            // 
-            // A1
-            // 
-            this.A1.HeaderText = "A1";
-            this.A1.Name = "A1";
-            // 
-            // A2
-            // 
-            this.A2.HeaderText = "A2";
-            this.A2.Name = "A2";
-            // 
-            // A3
-            // 
-            this.A3.HeaderText = "A3";
-            this.A3.Name = "A3";
-            // 
-            // A4
-            // 
-            this.A4.HeaderText = "A4";
-            this.A4.Name = "A4";
-            // 
-            // A5
-            // 
-            this.A5.HeaderText = "A5";
-            this.A5.Name = "A5";
-            // 
-            // Final
-            // 
-            this.Final.HeaderText = "Final";
-            this.Final.Name = "Final";
-            // 
-            // Promedio
-            // 
-            this.Promedio.HeaderText = "Promedio";
-            this.Promedio.Name = "Promedio";
-            // 
             // graficoLineas
             // 
             chartArea1.Name = "ChartArea1";
@@ -239,11 +241,30 @@
             title1.Text = "Evolución de Promedio";
             this.graficoLineas.Titles.Add(title1);
             // 
+            // txtFecha
+            // 
+            this.txtFecha.Enabled = false;
+            this.txtFecha.Location = new System.Drawing.Point(48, 592);
+            this.txtFecha.Name = "txtFecha";
+            this.txtFecha.Size = new System.Drawing.Size(100, 20);
+            this.txtFecha.TabIndex = 15;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(45, 573);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(190, 13);
+            this.label6.TabIndex = 14;
+            this.label6.Text = "Fecha a fijar con el 90% de confianza: ";
+            // 
             // DuracionProyecto
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1116, 598);
+            this.ClientSize = new System.Drawing.Size(1116, 624);
+            this.Controls.Add(this.txtFecha);
+            this.Controls.Add(this.label6);
             this.Controls.Add(this.graficoLineas);
             this.Controls.Add(this.txtPromedio);
             this.Controls.Add(this.label5);
@@ -290,6 +311,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Final;
         private System.Windows.Forms.DataGridViewTextBoxColumn Promedio;
         private System.Windows.Forms.DataVisualization.Charting.Chart graficoLineas;
+        private System.Windows.Forms.TextBox txtFecha;
+        private System.Windows.Forms.Label label6;
     }
 }
 

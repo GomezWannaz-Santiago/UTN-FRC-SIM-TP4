@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MathNet.Numerics.Distributions;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -45,7 +46,7 @@ namespace WindowsFormsApp1
                 txtTiempoMinimo.Text = resultado[1].ToString();
                 txtPromedio.Text = resultado[2].ToString();
                 txtPromedio45.Text = resultado[3].ToString();
-
+                txtFecha.Text = Math.Round(Normal.InvCDF(resultado[2], resultado[4], (double)0.9)).ToString();
             }
             catch (Exception ex)
             {
